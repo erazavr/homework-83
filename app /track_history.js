@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     }
     try {
         await trackHistory.save();
-        return res.send({message: `You have access to this endpoint. Welcome ${user.username}`})
+        return res.send({message: `You have access to this endpoint. Welcome ${user.username}!`})
     } catch (error) {
         res.status(400).send(error)
     }
