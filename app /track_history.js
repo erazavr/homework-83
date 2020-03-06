@@ -16,12 +16,15 @@ router.post('/', async (req, res) => {
         return res.status(401).send({error: "Authorizations type wrong or token not present"})
     }
     const user = await Users.findOne({token});
+    if (!trackHistory.user) {
+        trackHistory.user = user._id
+    }
     if (!user) {
         return res.status(401).send({error: "No user found with this token. Token incorrect"})
     }
     try {
         await trackHistory.save();
-        return res.send({message: `You have access to this endpoint. Welcome ${user.username}!`})
+        return res.send(trackHistory)
     } catch (error) {
         res.status(400).send(error)
     }
