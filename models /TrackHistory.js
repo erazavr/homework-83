@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const HistorySchema = new mongoose.Schema(
     {
         user: {
-            type: mongoose.Schema.Types.ObjectID,
-            ref: 'User',
+            type: String,
             required: true
         },
         track: {
-            type: mongoose.Schema.Types.ObjectID,
-            ref: 'Track',
+            type: String,
             required: true
         },
         datetime: {
